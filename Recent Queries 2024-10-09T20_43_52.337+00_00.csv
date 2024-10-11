@@ -1,0 +1,176 @@
+Execution ID,Query,Start time,Status,Run time,Data scanned,Query engine version used,Encryption
+f77632d8-8569-45bd-b213-73c5e68f02d7,"/* QuickSight 44acc90c-281b-4dca-9f8c-8cd8249687cb 
+ {""partner"":""QuickSight"",""entityId"":""6190158a-4b3a-4080-83e8-fce555f819a2"",""sheetId"":""6190158a-4b3a-4080-83e8-fce555f819a2_54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""6190158a-4b3a-4080-83e8-fce555f819a2_36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:36:34.822+00:00,SUCCEEDED,582 ms,26.27 KB,Athena engine version 3,
+0d83b5b9-0a39-4e52-879b-5ded3658e1b9,"/* QuickSight 812eb756-9cd1-492c-8b8f-373ea6718aae 
+ {""partner"":""QuickSight"",""entityId"":""6190158a-4b3a-4080-83e8-fce555f819a2"",""sheetId"":""6190158a-4b3a-4080-83e8-fce555f819a2_54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""6190158a-4b3a-4080-83e8-fce555f819a2_36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:36:17.805+00:00,SUCCEEDED,582 ms,26.27 KB,Athena engine version 3,
+6abdce3d-6ce6-4961-9db1-44861e4cf005,"/* QuickSight b04c7dad-a7af-4f5b-ac48-b1bce83c852f 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:27:15.027+00:00,SUCCEEDED,1.024 sec,26.27 KB,Athena engine version 3,
+8fa34801-5b95-4b55-94c3-932e41bb6ef5,"/* QuickSight d1ed4251-23b7-4b79-bb6a-40c3ec9c2d06 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 400 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", DENSE_RANK() OVER (ORDER BY ""date"" DESC) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 400 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:19:35.674+00:00,SUCCEEDED,549 ms,26.27 KB,Athena engine version 3,
+f1934ab4-4dbc-4a62-9a1a-df0c7e10162d,"/* QuickSight 472482f6-b56e-4c69-92ab-5c3e8781c144 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END AS ""$f5"", CASE WHEN ""$RANK_1"" > 400 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY ""date"" DESC) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 400 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 400 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:19:21.486+00:00,SUCCEEDED,606 ms,26.27 KB,Athena engine version 3,
+84d3ea58-e525-4f0f-bd24-7d5174578d92,"/* QuickSight 08faf21c-78dd-41a3-976a-6e01c029337f 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) AS ""!calc.dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel.1.0"", CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) + 1 AS ""!calc.dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel.2.0"", SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS ""!calc.dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel.0.0"", CASE WHEN CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) > 0 THEN 0 WHEN CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) < 0 THEN 1 ELSE -1 END AS ""8c467891-c0a7-320c-857e-52487cdc0374"", CASE WHEN CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) > 0 THEN 0 WHEN CAST(SUM(""fossil_fuel"") - (LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC)) AS DOUBLE) / NULLIF(CAST(LAG(SUM(""fossil_fuel"")) OVER (ORDER BY SUM(""fossil_fuel"") NULLS FIRST, ""date"" DESC) AS DOUBLE), 0) < 0 THEN 1 ELSE -1 END AS ""4258961a-fe31-3f4e-807e-a1d345c279a8""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST
+LIMIT 2",2024-10-09T20:18:58.721+00:00,SUCCEEDED,633 ms,26.27 KB,Athena engine version 3,
+42970871-5853-445a-8ee6-03b04a4b5f6e,"/* QuickSight 3d43382d-9856-419b-a16b-fd4c9a173966 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST
+LIMIT 2500",2024-10-09T20:18:58.697+00:00,SUCCEEDED,408 ms,26.27 KB,Athena engine version 3,
+f81a3901-3004-494a-9284-60d3b98bf8d2,"/* QuickSight 1df3c3a7-1b42-49bf-b481-c0877798e8a9 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:17:49.107+00:00,SUCCEEDED,683 ms,26.27 KB,Athena engine version 3,
+b8159271-a8f8-454c-beca-ad8d8605060d,"/* QuickSight 8b36989b-d193-4c53-bfcb-21f774e6aa6d 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f7"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""bitcoin"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:17:27.847+00:00,SUCCEEDED,729 ms,26.27 KB,Athena engine version 3,
+ddda5733-5407-49ba-986b-a8b7bdfbb720,"/* QuickSight 183e1d89-75c8-4afc-963c-9c08485c4061 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:17:19.421+00:00,SUCCEEDED,749 ms,26.27 KB,Athena engine version 3,
+cc89700b-149b-42b8-8bc0-cce4c33b4e9a,"/* QuickSight 56d71a69-57fb-4128-94b8-c56e5f33667b 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f5"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", DENSE_RANK() OVER (ORDER BY SUM(""fossil_fuel"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:17:01.976+00:00,SUCCEEDED,590 ms,26.27 KB,Athena engine version 3,
+1ce406e9-a076-4943-860d-8a16ce22e490,"/* QuickSight d0e2e028-e3af-4ee1-95c4-703e97175092 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f6"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", DENSE_RANK() OVER (ORDER BY SUM(""ethereum"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:16:58.435+00:00,SUCCEEDED,533 ms,26.27 KB,Athena engine version 3,
+2b01dd18-32c4-4cdc-9c42-a956c9bb2f62,"/* QuickSight 75f8de75-3b3e-48da-ae94-53ac6613eaa7 
+ {""partner"":""QuickSight"",""entityId"":""a2aed4a0-4d1f-4a56-a7a6-f08738f64614"",""sheetId"":""54abe83c-a1b8-49fe-b4c0-50a7e0dfd6f0"",""visualId"":""36553a8f-977e-4ebd-96ca-35e087bfcd8b""} */
+SELECT ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""isotherrow_1"", ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", ""$otherbucket_group_count"", ""count""
+FROM (
+SELECT CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END AS ""$f7"", CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END AS ""isotherrow_1"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", COUNT(*) AS ""$otherbucket_group_count"", SUM(""count"") AS ""count""
+FROM (
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", COUNT(*) AS ""count"", SUM(""fossil_fuel"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel_sum"", SUM(""ethereum"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum_sum"", SUM(""bitcoin"") AS ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin_sum"", DENSE_RANK() OVER (ORDER BY SUM(""bitcoin"") DESC, ""date"" NULLS FIRST) AS ""$RANK_1""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+GROUP BY ""date""
+) AS ""t""
+GROUP BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""dffed30f-7203-4dea-becb-56b382ab9732.date"" END, CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END, CASE WHEN ""$RANK_1"" > 2500 THEN 1 ELSE 0 END
+ORDER BY CASE WHEN ""$RANK_1"" > 2500 THEN NULL ELSE ""$RANK_1"" END NULLS FIRST
+) AS ""t0""",2024-10-09T20:16:46.070+00:00,SUCCEEDED,2.655 sec,26.27 KB,Athena engine version 3,
+c0e13a43-af3e-4c8e-a97e-a4b6d12d975e,"/* QuickSight a33e7eac-af6c-4178-aefc-513572b03367 */
+SELECT ""date"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.date"", ""bitcoin"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.bitcoin"", ""ethereum"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.ethereum"", ""fossil_fuel"" AS ""dffed30f-7203-4dea-becb-56b382ab9732.fossil_fuel""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+LIMIT 1000",2024-10-09T20:08:26.457+00:00,SUCCEEDED,564 ms,26.27 KB,Athena engine version 3,
+81f6e45b-b911-4e08-afe8-ad7af7bdb6c8,select 1,2024-10-09T20:07:58.321+00:00,SUCCEEDED,252 ms,0 MB,Athena engine version 3,
+1ca379dc-a09a-4eb7-8572-f8a4ae51a5c4,"/* QuickSight a8a052b9-3aa0-4631-a2f1-a9de17ef34fd */
+SELECT ""date"" AS ""d62b15c0-5ad1-4c27-a36b-feee24b3cb08.date"", ""bitcoin"" AS ""d62b15c0-5ad1-4c27-a36b-feee24b3cb08.bitcoin"", ""ethereum"" AS ""d62b15c0-5ad1-4c27-a36b-feee24b3cb08.ethereum"", ""fossil_fuel"" AS ""d62b15c0-5ad1-4c27-a36b-feee24b3cb08.fossil_fuel""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+LIMIT 1000",2024-10-09T19:36:50.910+00:00,FAILED,242 ms,0 MB,Athena engine version 3,
+4d6a4d38-6ade-49d3-a63c-90796aa709e6,select 1,2024-10-09T19:36:28.935+00:00,SUCCEEDED,176 ms,0 MB,Athena engine version 3,
+af40d0f6-9af5-4e6b-9850-8c436f774feb,"/* QuickSight 07a0d505-efa5-4d02-b0b1-9b1108717c4e */
+SELECT ""date"" AS ""0721c487-3af2-451f-9bea-f086cc8090ea.date"", ""bitcoin"" AS ""0721c487-3af2-451f-9bea-f086cc8090ea.bitcoin"", ""ethereum"" AS ""0721c487-3af2-451f-9bea-f086cc8090ea.ethereum"", ""fossil_fuel"" AS ""0721c487-3af2-451f-9bea-f086cc8090ea.fossil_fuel""
+FROM ""AwsDataCatalog"".""mydatabase"".""financial_data""
+LIMIT 1000",2024-10-09T19:18:39.510+00:00,FAILED,271 ms,0 MB,Athena engine version 3,
+0b812d46-efa0-40b4-ab7b-89b26e90a03d,select 1,2024-10-09T19:17:54.819+00:00,SUCCEEDED,172 ms,0 MB,Athena engine version 3,
+680b62f7-11bf-446a-b05d-f0f3e4913605,SELECT * FROM mydatabase.Financial_data LIMIT 10,2024-10-09T19:10:21.608+00:00,SUCCEEDED,392 ms,25.61 KB,Athena engine version 3,
+1600c44e-fe00-4bbd-bf84-7f55e114ba6a,"CREATE EXTERNAL TABLE mydatabase.Financial_data ( Date string, Bitcoin double, Ethereum double, Fossil_Fuel double ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION 's3://my-data-bucket-clement/'",2024-10-09T19:09:36.622+00:00,SUCCEEDED,2.955 sec,0 MB,Athena engine version 3,
+92f1b124-6398-437b-8bbd-e1012662ac25,CREATE DATABASE mydatabase,2024-10-09T19:05:38.586+00:00,SUCCEEDED,342 ms,0 MB,Athena engine version 3,
